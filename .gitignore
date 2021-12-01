@@ -1,0 +1,6 @@
+*.out
+
+*sw[op]
+*~
+
+.DS_Store
