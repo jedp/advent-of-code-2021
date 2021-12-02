@@ -3,6 +3,7 @@
   ; Sadly, ethel doesn't support files yet,
   ; so the input is hard-coded here.
 
+  ; Question part 1
   val increases = fn(l) {
     if l.length() == 0 then return 0
 
@@ -11,6 +12,21 @@
     for e in l {
       if e > last then count = count + 1
       last = e
+    }
+    count
+  }
+
+  ; Question part 2
+  val sliding_window = fn(l) {
+    if l.length() < 3 then return 0
+
+    var count = 0
+    var prev = l[0] + l[1] + l[2]
+    var curr = 0
+    for i in 1..l.length()-3 {
+      curr = l[i] + l[i+1] + l[i+2]
+      if curr > prev then count = count + 1
+      prev = curr
     }
     count
   }
@@ -2035,4 +2051,7 @@
 
   print("Example:", increases(example))
   print("Actual:", increases(readings))
+
+  print("Sliding example:", sliding_window(example))
+  print("Sliding example:", sliding_window(readings))
 }
